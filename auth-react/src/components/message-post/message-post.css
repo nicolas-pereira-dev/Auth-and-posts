@@ -1,0 +1,22 @@
+.message-post{
+    color: #f9f9f9;
+    padding: 20px;
+    margin: 16px 20px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.message-post-title{
+    margin: 0 0 12px;
+    color: #fff;
+    font-size: 1.25rem;
+}
+
+.message-post-content{
+    display: block;
+    color: #d6d6d6;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
