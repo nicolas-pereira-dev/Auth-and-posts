@@ -14,17 +14,22 @@ function HomePage() {
     });
     
     const [search, setSearch] = useState('');
-    const handleFilter = (post: Post) => post.title.includes(search) || post.content.includes(search);
-    const filteredPosts = posts?.filter(handleFilter);
+    const [debouncedSearch, setDebouncedSearch] = useState('');
+    const handleFilter = (post: Post) => post.title.includes(debouncedSearch) || post.content.includes(debouncedSearch);
+    const filteredPosts =  posts?.filter(handleFilter);
     // const filteredPosts = useMemo(
     //     () => posts?.filter(handleFilter),
     //     [posts, search]
     // );
 
     useEffect(
-        () => searchInputRef.current?.focus(),
-        []
+        () => {
+            const timer = setTimeout(() => setDebouncedSearch(search), 300)
+            return () => clearTimeout(timer);
+        }, [search]
     );
+
+    useEffect(() => searchInputRef.current?.focus(), []);
 
     return(
         <div className="home-page">
